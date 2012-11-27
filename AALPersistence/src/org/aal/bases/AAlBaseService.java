@@ -11,34 +11,42 @@ import javax.persistence.Persistence;
 
 /**
  * Clase que inicializa los servicios de persistencia.
- * @author Migue
+ * @author lufer
  * @version 1.0     Agosto 2012
  */
 public class AAlBaseService extends AAlLog implements Serializable {
-    
+/**
+ *
+ * @see entityManagerFactory
+ */
     protected EntityManagerFactory entityManagerFactory;
+  /**
+ *
+ * @see em
+ */
     protected EntityManager em;
-    
-    /*
-     * Constructor
-     */
-    public AAlBaseService(){
+ /**
+ *
+ * @see AAlBaseService
+ */
+    public AAlBaseService() {
         try {
             logger.debug("Inicia creación servicio persistencia");
-            entityManagerFactory = Persistence.createEntityManagerFactory(AAlConstantes.PERSISTENT_UNIT, 
+            entityManagerFactory = Persistence.
+                    createEntityManagerFactory(AAlConstantes.PERSISTENT_UNIT,
                     System.getProperties());
             em = entityManagerFactory.createEntityManager();
             logger.debug("Finaliza creación servicio persistencia");
         } catch (Throwable t) {
-            logger.debug(AAlConstantes.ERROR_MSG + t.toString() + ":" + t.getMessage());
+            logger.debug(AAlConstantes.
+                    ERROR_MSG + t.toString() + ":" + t.getMessage());
         }
     }
 
     /*
      * Getters y Setters
      */
-    
-    public EntityManager getEm() {
+    public  EntityManager getEm() {
         return em;
     }
 
@@ -49,11 +57,7 @@ public class AAlBaseService extends AAlLog implements Serializable {
     public EntityManagerFactory getEntityManagerFactory() {
         return entityManagerFactory;
     }
-
-    public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
     }
-    
-    
-    
 }
