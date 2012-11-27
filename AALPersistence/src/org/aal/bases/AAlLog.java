@@ -9,15 +9,17 @@ import org.apache.log4j.Logger;
 
 
 
-/**
+/**.
  * Clase base para instaciar el log
- * @author Migue
+ * @author lufer
  * @version 1.0     Agosto 2012
  */
 
 public class AAlLog {
-    
     // Instanciar la variable para gestión del log
+/**
+ * @author logger
+ *
+ */
     protected static Logger logger = Logger.getLogger(AAlLog.class);
-    
 }

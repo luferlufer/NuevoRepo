@@ -6,13 +6,7 @@ package org.aal.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  *
@@ -20,14 +14,33 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Compra implements Serializable {
+    /**
+ *
+ * @see serialVersionUID
+ */
     private static final long serialVersionUID = 1L;
+    /**
+ *
+ * @id
+ */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+       /**
+ *
+ * @id
+ */
     private Date fecha;
-    private Double monto;
-    
+       /**
+ *
+ * @id
+ */
+    private Double monto;    
     //@JoinColumn (name = "ID", referencedColumnName = "ID" )
+       /**
+ *
+ * @id
+ */
     @ManyToOne (optional = false)
     private Cliente cliente;
 
@@ -74,12 +87,13 @@ public class Compra implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+     //  Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Compra)) {
             return false;
         }
         Compra other = (Compra) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id == null && other.id != null)
+                || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -89,5 +103,4 @@ public class Compra implements Serializable {
     public String toString() {
         return "org.aal.entities.Compra[ id=" + id + " ]";
     }
-    
 }

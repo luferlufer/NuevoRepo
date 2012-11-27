@@ -6,33 +6,48 @@ package org.aal.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  *
- * @author Migue
+ * @author lufer
  */
 @Entity
 public class Cliente implements Serializable {
+/**
+ *
+ * @see serialVersionUID
+ */
     private static final long serialVersionUID = 1L;
+ /**
+ *
+ * @id
+ */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    /**
+ *
+ * @see nombre
+ */
     private String nombre;
+    /**
+ *
+ * @see apellido
+ */
     private String apellido;
-    
     // @JoinColumn(name="ID", referencedColumnName="ID")
-    @OneToOne(optional=false, fetch= FetchType.LAZY)
+    /**
+ *
+ * @OneToOne
+ */
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Direccion direccion;
-    
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="cliente")
+ /**
+ *
+ * @OneToMany
+ */
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private List<Compra> compraList;
 
     public List<Compra> getCompraList() {
@@ -66,7 +81,6 @@ public class Cliente implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
     public Integer getId() {
         return id;
     }
@@ -84,20 +98,19 @@ public class Cliente implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+ // Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Cliente)) {
             return false;
         }
         Cliente other = (Cliente) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id == null && other.id != null)
+                || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
-
     @Override
     public String toString() {
         return "org.aal.entities.Cliente[ id=" + id + " ]";
     }
-    
 }

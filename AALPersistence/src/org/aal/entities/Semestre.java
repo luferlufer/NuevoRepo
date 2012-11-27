@@ -8,16 +8,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 /**
  *
@@ -26,28 +17,60 @@ import javax.persistence.Transient;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Semestre.getAll", query = "FROM Semestre"),
-    @NamedQuery(name = "Semestre.getById", query = "FROM Semestre WHERE id = :SemestreId"),
+    @NamedQuery(name = "Semestre.getById",
+        query = "FROM Semestre WHERE id = :SemestreId"),
     //NamedQuery para actualización
-    @NamedQuery(name= "Semestre.setNombre", 
-        query = "UPDATE Semestre s SET s.nombre= :SemestreNombre WHERE s.id= :SemestreId")
-       
+    @NamedQuery(name = "Semestre.setNombre",
+        query = "UPDATE Semestre s SET s.nombre"
+        + " = :SemestreNombre WHERE s.id= :SemestreId")
 })
 public class Semestre implements Serializable {
+       /**
+ *
+ * @id
+ */
     @Transient
-    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+      /**
+ *
+ * @id
+ */
+ private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+       /**
+ *
+ * @id
+ */
     private static final long serialVersionUID = 1L;
+    /**
+ *
+ * @id
+ */
     @Id
+       /**
+ *
+ * @id
+ */
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer ids;
+       /**
+ *
+ * @id
+ */
     private String nombre;
-    
     // Establecer relación con Estudiante
     // Cascade, operaciones en cascada
     // mappedBy, variable de vínculo entre Semestre y estudiante
     // Lista de objetos, por la relación uno a muchos
-    @OneToMany(cascade= CascadeType.ALL, mappedBy="semestre", fetch= FetchType.LAZY)
+       /**
+ *
+ * @id
+ */
+@OneToMany(cascade= CascadeType.ALL, mappedBy
+        = "semestre", fetch= FetchType.LAZY)
     private List<Estudiante> estudianteList;
-
+   /**
+ *
+ * @return.
+ */
     public List<Estudiante> getEstudianteList() {
         return estudianteList;
     }
@@ -55,17 +78,14 @@ public class Semestre implements Serializable {
     public void setEstudianteList(List<Estudiante> estudianteList) {
         this.estudianteList = estudianteList;
     }
-    
     public Integer getIds() {
         return ids;
     }
-
     public void setIds(Integer ids) {
         Integer oldIds = this.ids;
         this.ids = ids;
         changeSupport.firePropertyChange("ids", oldIds, ids);
     }
-    
     public String getNombre() {
         return nombre;
     }

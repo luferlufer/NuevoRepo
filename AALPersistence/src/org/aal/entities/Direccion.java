@@ -9,21 +9,43 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
 /**
  *
  * @author Migue
  */
 @Entity
 public class Direccion implements Serializable {
+       /**
+ *
+ * @id
+ */
     private static final long serialVersionUID = 1L;
+      /**
+ *
+ * @id
+ */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+       /**
+ *
+ * @id
+ */
     private String provincia;
+      /**
+ *
+ * @id
+ */
     private String ciudad;
+       /**
+ *
+ * @id
+ */
     private String barrio;
+       /**
+ *
+ * @id
+ */
     private String direccion1;
 
     public String getBarrio() {
@@ -77,12 +99,13 @@ public class Direccion implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+ // Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Direccion)) {
             return false;
         }
         Direccion other = (Direccion) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id == null && other.id != null)
+                || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -92,5 +115,4 @@ public class Direccion implements Serializable {
     public String toString() {
         return "org.aal.entities.Direccion[ id=" + id + " ]";
     }
-    
 }

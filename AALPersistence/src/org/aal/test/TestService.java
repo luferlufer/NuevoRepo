@@ -12,12 +12,16 @@ import org.aal.service.EstudianteService;
  *
  * @author Bomlu
  */
-public class test_service {
-
-    /**
-     * @param args the command line arguments
+public class TestService {
+ /**
+     * @TestService
      */
-    public static void main(String[] args) {
+    public TestService() {
+    }
+    /**.
+     * see main
+     */
+    public static void main(final String[] args) {
         // TODO code application logic here
         // Estudiante e = new Estudiante();
         // Semestre s = new Semestre();
@@ -27,17 +31,16 @@ public class test_service {
         //e.setSemestre(s);
 
         EstudianteService es = new EstudianteService();
-        
         //es.persistEstudiante(e);
         //EstudianteService es = new EstudianteService();
         // GetAll
         List<Estudiante> le = es.getAll();
         es.show(le);
         //GetById
-        Estudiante e = es.getById(15);
+        Estudiante e = es.getById(1);
         es.show(e);
         //getByFind
-        Estudiante e2 = es.getByFind(17);
+        Estudiante e2 = es.getByFind(2);
         es.show(e2);
         //getByQuery
         String s = "FROM Estudiante WHERE id >= 3 AND id <= 5";
@@ -63,7 +66,7 @@ public class test_service {
         //e.setSemestre(s);
         //ds.persistEntity(e);
         //PROBAR GET
-        //Estudiante e = new Estudiante();      
+        //Estudiante e = new Estudiante();
         //e = (Estudiante) ds.getEntity(6, e);
         //System.out.println(e.toString());
         //        Semestre s = new Semestre();
@@ -85,8 +88,5 @@ public class test_service {
         ////        Probar persistencia
         //        s1 = (Semestre) ds.getEntity(2, s1);
         //        System.out.println(s1.toString());
-        
-
-
     }
 }

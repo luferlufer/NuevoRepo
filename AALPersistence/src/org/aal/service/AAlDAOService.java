@@ -14,17 +14,21 @@ import org.aal.bases.AAlDAOManager;
  *
  * @author Bomlu
  */
-public class AAlDAOService extends AAlBaseService implements AAlDAOManager, Serializable{
+public class AAlDAOService extends AAlBaseService
+implements AAlDAOManager, Serializable {
 
-    // Siempre se necesita un constructor para instanciar las clases de mas arriba
+ // Siempre se necesita un constructor para instanciar las clases de mas arriba
    /*Constructor*/
-    public AAlDAOService(){
+       /**
+ *
+ * @id
+ */
+    public AAlDAOService() {
         super();
     }
-    
-    /**
+    /**.
      * Método genérico para insert de una Entity
-     * @param Entity que se desea insertar
+     * @param entity que se desea insertar
      * @return Entity persistida
      */
     @Override
@@ -33,7 +37,7 @@ public class AAlDAOService extends AAlBaseService implements AAlDAOManager, Seri
         trans.begin();
         logger.debug(AAlConstantes.PERSIST + entity.toString());
         em.persist(entity);
-        // Para obligar a hacer la persistencia en la base de datos y no en un caché
+   // Para obligar a hacer la persistencia en la base de datos y no en un caché
         em.flush();
         trans.commit();
         //em.close();
@@ -54,15 +58,5 @@ public class AAlDAOService extends AAlBaseService implements AAlDAOManager, Seri
         logger.debug(AAlConstantes.UPDATE + entity.toString());
         em.merge(entity);
         trans.commit();
-    }
-    
-    
-   
-    
-
-    
-
-   
-    
-    
+    }   
 }
