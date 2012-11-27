@@ -16,7 +16,7 @@ public class NuevoEstudiante extends javax.swing.JDialog {
     public NuevoEstudiante(java.awt.Frame parent, boolean modal, Semestre s) {
         super(parent, modal);
         initComponents();
-        nuevo= s;
+        nuevo = s;
     }
 
     /** This method is called from within the constructor to
@@ -174,8 +174,10 @@ public class NuevoEstudiante extends javax.swing.JDialog {
 
 private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 // TODO add your handling code here:
-    if ("".equals(txtNombre.getText())||"".equals(txtApellido.getText())||"".equals(txtLugarNacimiento.getText())||"".equals(txtCelular.getText())) {
-        JOptionPane.showMessageDialog(null,"Campo vacío por favor llenelo");
+    if ("".equals(txtNombre.getText())|| "".equals(txtApellido.getText())||""
+            .equals(txtLugarNacimiento.getText()) || ""
+            .equals(txtCelular.getText())) {
+        JOptionPane.showMessageDialog(null , "Campo vacío por favor llenelo");
     } else {
         Estudiante e = new Estudiante();
         e.setNombre(this.txtNombre.getText());

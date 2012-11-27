@@ -212,7 +212,6 @@ public class Formulario extends javax.swing.JFrame {
 private void cmbSemestreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSemestreItemStateChanged
 // TODO add your handling code here:
   //  DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
-        
     es = new EstudianteService();
 //    jList1 = new JList();
   jlConsultas.removeAll();
